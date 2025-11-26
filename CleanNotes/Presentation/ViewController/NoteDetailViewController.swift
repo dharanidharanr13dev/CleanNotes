@@ -120,7 +120,7 @@ extension NoteDetailViewController: UITextViewDelegate {
             let newSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: .greatestFiniteMagnitude))
             titleHeightConstraint.constant = newSize.height
         } else if textView == detailTextView {
-            detailTextView.placeholder = (detailTextView.text.isEmpty) ? "detail" : nil
+            detailTextView.placeholder = (detailTextView.text.isEmpty) ? "Detail" : nil
             let newSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: .greatestFiniteMagnitude))
             detailHeightConstraint.constant = newSize.height
         }

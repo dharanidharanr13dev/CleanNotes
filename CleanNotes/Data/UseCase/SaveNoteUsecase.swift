@@ -23,7 +23,7 @@ public class SaveNoteUsecase: ParentUsecase {
 
     public override func run(request: Request, onSuccess: @escaping (Response) -> Void, onFailure: @escaping (Error) -> Void) {
         guard let note = (request as? SaveNoteUsecaseRequest)?.note else {
-            fatalError("Invalid SaveNoteUsecaseRequest value")
+            fatalError("Invalid SaveNoteUsecaseRequest request")
         }
         dataManager.saveNote(note: note) {
             let response = SaveNoteUsecaseResponse()

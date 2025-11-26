@@ -23,7 +23,7 @@ public class DeleteNoteUsecase: ParentUsecase {
 
     public override func run(request: Request, onSuccess: @escaping (Response) -> Void, onFailure: @escaping (Error) -> Void) {
         guard let id = (request as? DeleteNoteUsecaseRequest)?.id else {
-            fatalError("Invalid SaveNoteUsecaseRequest value")
+            fatalError("Invalid DeleteNoteUsecaseRequest request")
         }
         dataManager.deleteNote(id: id) {
             let response = DeleteNoteUsecaseResponse()

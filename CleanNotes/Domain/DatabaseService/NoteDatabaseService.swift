@@ -33,12 +33,12 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
 
     public func saveNotes(_ notes: [NoteModel], onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
         CoreDataService.shared.performBackgroundTask { context in
-            for t in notes {
+            for i in notes {
                 let entity = NoteEntity(context: context)
-                entity.id = t.id
-                entity.title = t.title
-                entity.detail = t.detail
-                entity.createdDate = t.createdDate
+                entity.id = i.id
+                entity.title = i.title
+                entity.detail = i.detail
+                entity.createdDate = i.createdDate
             }
             do {
                 try context.save()

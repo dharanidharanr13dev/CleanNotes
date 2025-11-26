@@ -25,7 +25,6 @@ public class NoteDataManager: NoteDataManagerContract {
                     } onFailure: { error in
                         onFailure(error)
                     }
-
                  } onFailure: { error in
                      onFailure(error)
                  }

@@ -11,6 +11,7 @@ public struct NotePresentationModel {
 
     public init(note: NoteModel) {
         self.id = note.id
+        self.createdDate = note.createdDate.isoToFormatted() ?? ""
 
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 17)
@@ -22,9 +23,5 @@ public struct NotePresentationModel {
             .foregroundColor: UIColor.secondaryLabel
         ]
         self.detailText = NSAttributedString(string: note.detail, attributes: contentAttributes)
-        
-        
-        
-        self.createdDate = note.createdDate.isoToFormatted() ?? ""
     }
 }
