@@ -20,7 +20,7 @@ public class NoteDetailViewModel {
 
 
 extension NoteDetailViewModel: NoteDetailViewModelContract {
-    func saveNote(note: NoteModel) {
+    func saveNote(note: Note) {
         let request = SaveNoteUsecaseRequest(note: note)
         saveNoteUsecase.execute(request: request, onSuccess: { [weak self] response in
             guard let self else { return }

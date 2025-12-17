@@ -12,10 +12,10 @@ final class NoteDetailViewController: UIViewController {
     @IBOutlet weak var deleteNoteButton: UIButton!
     
     internal var viewModel: NoteDetailViewModelContract
-    private var note: NoteModel?
+    private var note: Note?
     private var createdDate: String?
     
-    init(viewModel: NoteDetailViewModelContract, note: NoteModel? = nil) {
+    init(viewModel: NoteDetailViewModelContract, note: Note? = nil) {
         self.note = note
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -84,7 +84,7 @@ final class NoteDetailViewController: UIViewController {
             return
         }
         let idToUse = note?.id ?? UUID().uuidString
-        let newNote = NoteModel(
+        let newNote = Note(
             id: idToUse,
             title: titleText,
             detail: detailText,

@@ -2,7 +2,7 @@
 import Foundation
 
 
-public struct NoteModel {
+public struct Note {
     public let id: String
     public let title: String
     public let detail: String

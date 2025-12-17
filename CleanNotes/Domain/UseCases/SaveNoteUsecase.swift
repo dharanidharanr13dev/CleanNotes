@@ -3,8 +3,8 @@ import Foundation
 
 
 public class SaveNoteUsecaseRequest: Request {
-    public let note: NoteModel
-    public init(note: NoteModel) {
+    public let note: Note
+    public init(note: Note) {
         self.note = note
     }
 }
@@ -15,9 +15,9 @@ public class SaveNoteUsecaseResponse: Response {
 
 
 public class SaveNoteUsecase: ParentUsecase {
-    var dataManager: NoteDataManagerContract
-    public init(dataManager: NoteDataManagerContract) {
-        self.dataManager = dataManager
+    var repository: NoteRepositoryContract
+    public init(dataManager: NoteRepositoryContract) {
+        self.repository = dataManager
         super.init()
     }
 
@@ -25,7 +25,7 @@ public class SaveNoteUsecase: ParentUsecase {
         guard let note = (request as? SaveNoteUsecaseRequest)?.note else {
             fatalError("Invalid SaveNoteUsecaseRequest request")
         }
-        dataManager.saveNote(note: note) {
+        repository.saveNote(note: note) {
             let response = SaveNoteUsecaseResponse()
             self.invokeSuccess(response: response, onSuccess: onSuccess)
         } onFailure: { error in

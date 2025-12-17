@@ -23,14 +23,13 @@
 		81A3F8172EA0F60C00C29EC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8152EA0F60C00C29EC5 /* SceneDelegate.swift */; };
 		81A3F8182EA0F60C00C29EC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8162EA0F60C00C29EC5 /* AppDelegate.swift */; };
 		81A3F81A2EA0F61900C29EC5 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8192EA0F61900C29EC5 /* Assembler.swift */; };
-		81A3F8202EA0F62D00C29EC5 /* NoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F81B2EA0F62D00C29EC5 /* NoteDataManager.swift */; };
+		81A3F8202EA0F62D00C29EC5 /* NoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F81B2EA0F62D00C29EC5 /* NoteRepository.swift */; };
 		81A3F8212EA0F62D00C29EC5 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F81C2EA0F62D00C29EC5 /* CoreDataService.swift */; };
-		81A3F8222EA0F62D00C29EC5 /* NoteDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F81D2EA0F62D00C29EC5 /* NoteDataManagerContract.swift */; };
 		81A3F8232EA0F62D00C29EC5 /* NoteNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F81E2EA0F62D00C29EC5 /* NoteNetworkService.swift */; };
 		81A3F8242EA0F62D00C29EC5 /* NoteDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F81F2EA0F62D00C29EC5 /* NoteDatabaseService.swift */; };
 		81A3F82B2EA0F63E00C29EC5 /* ParentUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8252EA0F63E00C29EC5 /* ParentUsecase.swift */; };
 		81A3F82C2EA0F63E00C29EC5 /* GetNoteListUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8262EA0F63E00C29EC5 /* GetNoteListUsecase.swift */; };
-		81A3F8322EA0F65200C29EC5 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8312EA0F65200C29EC5 /* NoteModel.swift */; };
+		81A3F8322EA0F65200C29EC5 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8312EA0F65200C29EC5 /* Note.swift */; };
 		81A3F8362EA0F66800C29EC5 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8332EA0F66800C29EC5 /* NoteListViewController.swift */; };
 		81A3F8372EA0F66800C29EC5 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8342EA0F66800C29EC5 /* NoteListViewModel.swift */; };
 		81A3F8422EA1020900C29EC5 /* NotePresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F8412EA1020900C29EC5 /* NotePresentationModel.swift */; };
@@ -42,6 +41,7 @@
 		81B3315F2EA8DB520061B160 /* NoteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81B3315D2EA8DB520061B160 /* NoteDetailViewController.xib */; };
 		81B331632EA8F3240061B160 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B331622EA8F3240061B160 /* UITextView+Extension.swift */; };
 		81D898792EAF5F1E003FE2C3 /* AssemblerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D898782EAF5F1E003FE2C3 /* AssemblerContract.swift */; };
+		DA0E3D132EF2543200F1FA5D /* NoteRepositoryContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E3D122EF2543200F1FA5D /* NoteRepositoryContract.swift */; };
 		DA15FC752ED6C1F600422DAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15FC742ED6C1F600422DAD /* UIViewController+Extension.swift */; };
 		DAD2B6062ED4E3C5004B483D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2B6052ED4E3C5004B483D /* Date+Extension.swift */; };
 		DAD2B60C2ED5AD58004B483D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2B60B2ED5AD58004B483D /* String+Extension.swift */; };
@@ -69,14 +69,13 @@
 		81A3F8152EA0F60C00C29EC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		81A3F8162EA0F60C00C29EC5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81A3F8192EA0F61900C29EC5 /* Assembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
-		81A3F81B2EA0F62D00C29EC5 /* NoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDataManager.swift; sourceTree = "<group>"; };
+		81A3F81B2EA0F62D00C29EC5 /* NoteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteRepository.swift; sourceTree = "<group>"; };
 		81A3F81C2EA0F62D00C29EC5 /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
-		81A3F81D2EA0F62D00C29EC5 /* NoteDataManagerContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDataManagerContract.swift; sourceTree = "<group>"; };
 		81A3F81E2EA0F62D00C29EC5 /* NoteNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteNetworkService.swift; sourceTree = "<group>"; };
 		81A3F81F2EA0F62D00C29EC5 /* NoteDatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDatabaseService.swift; sourceTree = "<group>"; };
 		81A3F8252EA0F63E00C29EC5 /* ParentUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentUsecase.swift; sourceTree = "<group>"; };
 		81A3F8262EA0F63E00C29EC5 /* GetNoteListUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNoteListUsecase.swift; sourceTree = "<group>"; };
-		81A3F8312EA0F65200C29EC5 /* NoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		81A3F8312EA0F65200C29EC5 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		81A3F8332EA0F66800C29EC5 /* NoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		81A3F8342EA0F66800C29EC5 /* NoteListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
 		81A3F8412EA1020900C29EC5 /* NotePresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePresentationModel.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		81B3315D2EA8DB520061B160 /* NoteDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteDetailViewController.xib; sourceTree = "<group>"; };
 		81B331622EA8F3240061B160 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		81D898782EAF5F1E003FE2C3 /* AssemblerContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblerContract.swift; sourceTree = "<group>"; };
+		DA0E3D122EF2543200F1FA5D /* NoteRepositoryContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepositoryContract.swift; sourceTree = "<group>"; };
 		DA15FC742ED6C1F600422DAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DAD2B6052ED4E3C5004B483D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DAD2B60B2ED5AD58004B483D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -147,33 +147,33 @@
 			children = (
 				81A3F8462EA1037100C29EC5 /* initialization */,
 				81A3F8452EA1036A00C29EC5 /* Presentation */,
-				81A3F8442EA1036700C29EC5 /* Data */,
-				81A3F8432EA1035F00C29EC5 /* Domain */,
+				81A3F8442EA1036700C29EC5 /* Domain */,
+				81A3F8432EA1035F00C29EC5 /* Data */,
 				8182EF0D2EA10CB00094235D /* Helpers */,
 				8182EF0B2EA10B120094235D /* Resource */,
 			);
 			path = CleanNotes;
 			sourceTree = "<group>";
 		};
-		81A3F8432EA1035F00C29EC5 /* Domain */ = {
+		81A3F8432EA1035F00C29EC5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				81A3F84E2EA1047300C29EC5 /* DataManager */,
-				81A3F84F2EA1048800C29EC5 /* DatabaseService */,
-				81A3F8502EA104D900C29EC5 /* NetworkService */,
+				81A3F84E2EA1047300C29EC5 /* RepositoryImplementations */,
+				81A3F84F2EA1048800C29EC5 /* Local */,
+				81A3F8502EA104D900C29EC5 /* Remote */,
 				81A3F8512EA105F600C29EC5 /* CoreDataService */,
 			);
-			path = Domain;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		81A3F8442EA1036700C29EC5 /* Data */ = {
+		81A3F8442EA1036700C29EC5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				81A3F84B2EA103DD00C29EC5 /* Entity */,
-				81A3F84C2EA103FD00C29EC5 /* CoreData */,
-				81A3F84D2EA1040F00C29EC5 /* UseCase */,
+				81A3F84B2EA103DD00C29EC5 /* Entities */,
+				81A3F84D2EA1040F00C29EC5 /* UseCases */,
+				DA0E3D142EF2579200F1FA5D /* Repositories */,
 			);
-			path = Data;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		81A3F8452EA1036A00C29EC5 /* Presentation */ = {
@@ -192,9 +192,9 @@
 			children = (
 				81A3F8162EA0F60C00C29EC5 /* AppDelegate.swift */,
 				81A3F8152EA0F60C00C29EC5 /* SceneDelegate.swift */,
+				8133DA462EA3AAD500FA14FE /* AppCoordinator.swift */,
 				81A3F8192EA0F61900C29EC5 /* Assembler.swift */,
 				81D898782EAF5F1E003FE2C3 /* AssemblerContract.swift */,
-				8133DA462EA3AAD500FA14FE /* AppCoordinator.swift */,
 			);
 			path = initialization;
 			sourceTree = "<group>";
@@ -240,25 +240,15 @@
 			path = PresentationModel;
 			sourceTree = "<group>";
 		};
-		81A3F84B2EA103DD00C29EC5 /* Entity */ = {
+		81A3F84B2EA103DD00C29EC5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				81A3F8312EA0F65200C29EC5 /* NoteModel.swift */,
+				81A3F8312EA0F65200C29EC5 /* Note.swift */,
 			);
-			path = Entity;
+			path = Entities;
 			sourceTree = "<group>";
 		};
-		81A3F84C2EA103FD00C29EC5 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				DAD2B6232ED6078A004B483D /* NoteEntity+CoreDataClass.swift */,
-				DAD2B6242ED6078A004B483D /* NoteEntity+CoreDataProperties.swift */,
-				DAD2B6202ED60759004B483D /* CleanNotes.xcdatamodeld */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		81A3F84D2EA1040F00C29EC5 /* UseCase */ = {
+		81A3F84D2EA1040F00C29EC5 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
 				81A3F8252EA0F63E00C29EC5 /* ParentUsecase.swift */,
@@ -266,40 +256,42 @@
 				81457DBD2EACA07B008371C6 /* SaveNoteUsecase.swift */,
 				81457DC52EACCB73008371C6 /* DeleteNoteUsecase.swift */,
 			);
-			path = UseCase;
+			path = UseCases;
 			sourceTree = "<group>";
 		};
-		81A3F84E2EA1047300C29EC5 /* DataManager */ = {
+		81A3F84E2EA1047300C29EC5 /* RepositoryImplementations */ = {
 			isa = PBXGroup;
 			children = (
-				81A3F81B2EA0F62D00C29EC5 /* NoteDataManager.swift */,
-				81A3F81D2EA0F62D00C29EC5 /* NoteDataManagerContract.swift */,
+				81A3F81B2EA0F62D00C29EC5 /* NoteRepository.swift */,
 			);
-			path = DataManager;
+			path = RepositoryImplementations;
 			sourceTree = "<group>";
 		};
-		81A3F84F2EA1048800C29EC5 /* DatabaseService */ = {
+		81A3F84F2EA1048800C29EC5 /* Local */ = {
 			isa = PBXGroup;
 			children = (
 				81A3F81F2EA0F62D00C29EC5 /* NoteDatabaseService.swift */,
 				81457DC72EACD06A008371C6 /* NoteDatabaseServiceContract.swift */,
 			);
-			path = DatabaseService;
+			path = Local;
 			sourceTree = "<group>";
 		};
-		81A3F8502EA104D900C29EC5 /* NetworkService */ = {
+		81A3F8502EA104D900C29EC5 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
 				81A3F81E2EA0F62D00C29EC5 /* NoteNetworkService.swift */,
 				81457DC92EACD0A5008371C6 /* NoteNetworkServiceContract.swift */,
 			);
-			path = NetworkService;
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		81A3F8512EA105F600C29EC5 /* CoreDataService */ = {
 			isa = PBXGroup;
 			children = (
 				81A3F81C2EA0F62D00C29EC5 /* CoreDataService.swift */,
+				DAD2B6232ED6078A004B483D /* NoteEntity+CoreDataClass.swift */,
+				DAD2B6242ED6078A004B483D /* NoteEntity+CoreDataProperties.swift */,
+				DAD2B6202ED60759004B483D /* CleanNotes.xcdatamodeld */,
 			);
 			path = CoreDataService;
 			sourceTree = "<group>";
@@ -314,6 +306,14 @@
 				DAD2B60B2ED5AD58004B483D /* String+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		DA0E3D142EF2579200F1FA5D /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				DA0E3D122EF2543200F1FA5D /* NoteRepositoryContract.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,10 +395,11 @@
 				81A3F8422EA1020900C29EC5 /* NotePresentationModel.swift in Sources */,
 				81457DC82EACD06A008371C6 /* NoteDatabaseServiceContract.swift in Sources */,
 				811917782EA9F9DE00F60816 /* NoteListViewControllerContract.swift in Sources */,
-				81A3F8202EA0F62D00C29EC5 /* NoteDataManager.swift in Sources */,
+				81A3F8202EA0F62D00C29EC5 /* NoteRepository.swift in Sources */,
 				81457DC62EACCB73008371C6 /* DeleteNoteUsecase.swift in Sources */,
+				DA0E3D132EF2543200F1FA5D /* NoteRepositoryContract.swift in Sources */,
 				81B3315A2EA8C8390061B160 /* NoteTableViewCell.swift in Sources */,
-				81A3F8322EA0F65200C29EC5 /* NoteModel.swift in Sources */,
+				81A3F8322EA0F65200C29EC5 /* Note.swift in Sources */,
 				81A3F81A2EA0F61900C29EC5 /* Assembler.swift in Sources */,
 				DAD2B6252ED6078A004B483D /* NoteEntity+CoreDataClass.swift in Sources */,
 				DAD2B6262ED6078A004B483D /* NoteEntity+CoreDataProperties.swift in Sources */,
@@ -421,7 +422,6 @@
 				DAD2B60C2ED5AD58004B483D /* String+Extension.swift in Sources */,
 				81B331532EA8C5C00061B160 /* UITableView+Extension.swift in Sources */,
 				81D898792EAF5F1E003FE2C3 /* AssemblerContract.swift in Sources */,
-				81A3F8222EA0F62D00C29EC5 /* NoteDataManagerContract.swift in Sources */,
 				81A3F8362EA0F66800C29EC5 /* NoteListViewController.swift in Sources */,
 				81A3F8172EA0F60C00C29EC5 /* SceneDelegate.swift in Sources */,
 				81B3314E2EA8A9220061B160 /* NoteDetailViewController.swift in Sources */,

@@ -7,7 +7,7 @@ public class NoteListViewModel {
     weak var viewController: NoteListViewControllerContract?
     private var getNoteListUsecase: GetNoteListUsecase
     
-    private var allNotes: [NoteModel] = []
+    private var allNotes: [Note] = []
     
     init(viewController: NoteListViewControllerContract? = nil, getNoteListUsecase: GetNoteListUsecase, coordinator: NoteListCoordinatorContract) {
         self.viewController = viewController
@@ -63,7 +63,7 @@ extension NoteListViewModel: NoteListViewModelContract {
         getNotes()
     }
     
-    public func showNoteDetail(_ note: NoteModel?) {
+    public func showNoteDetail(_ note: Note?) {
         coordinator?.showNoteDetail(note)
     }
 }

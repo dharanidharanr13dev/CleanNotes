@@ -6,7 +6,7 @@ import CoreData
 public class NoteDatabaseService: NoteDatabaseServiceContract {
     public init() {}
 
-    public func getNoteList(onSuccess: @escaping ([NoteModel]) -> Void, onFailure: @escaping (Error) -> Void) {
+    public func getNoteList(onSuccess: @escaping ([Note]) -> Void, onFailure: @escaping (Error) -> Void) {
         let context = CoreDataService.shared.viewContext
         context.perform {
             let request: NSFetchRequest<NoteEntity> = NoteEntity.fetchRequest()
@@ -16,22 +16,22 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
             do {
                 let results = try context.fetch(request)
                 let notes = results.map {
-                    NoteModel(
+                    Note(
                         id: $0.id ?? "",
                         title: $0.title ?? "",
                         detail: $0.detail ?? "",
                         createdDate: $0.createdDate ?? ""
                     )
                 }
-                DispatchQueue.main.async { onSuccess(notes) }
+                onSuccess(notes)
             } catch {
                 Logger.debug("Fetch error: \(error)")
-                DispatchQueue.main.async { onFailure(error) }
+                onFailure(error)
             }
         }
     }
 
-    public func saveNotes(_ notes: [NoteModel], onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
+    public func saveNotes(_ notes: [Note], onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
         CoreDataService.shared.performBackgroundTask { context in
             for i in notes {
                 let entity = NoteEntity(context: context)
@@ -42,19 +42,15 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
             }
             do {
                 try context.save()
-                DispatchQueue.main.async {
-                    onSuccess()
-                }
+                onSuccess()
             } catch {
                 Logger.debug("Save error: \(error)")
-                DispatchQueue.main.async {
-                    onFailure(error)
-                }
+                onFailure(error)
             }
         }
     }
 
-    public func saveNote(note: NoteModel, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
+    public func saveNote(note: Note, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
         CoreDataService.shared.performBackgroundTask { context in
             let request: NSFetchRequest<NoteEntity> = NoteEntity.fetchRequest()
             request.predicate = NSPredicate(format: "id == %@", note.id)
@@ -71,14 +67,10 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
                     noteEntity.createdDate = note.createdDate
                 }
                 try context.save()
-                DispatchQueue.main.async {
-                    onSuccess()
-                }
+                onSuccess()
             } catch {
                 Logger.debug("SaveOrUpdate error: \(error)")
-                DispatchQueue.main.async {
-                    onFailure(error)
-                }
+                onFailure(error)
             }
         }
     }
@@ -92,22 +84,15 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
                 if let noteToDelete = results.first {
                     context.delete(noteToDelete)
                     try context.save()
-                    DispatchQueue.main.async {
-                        onSuccess()
-                    }
+                    onSuccess()
                 } else {
                     let notFound = NSError(domain: "NoteDatabaseService", code: 404, userInfo: [NSLocalizedDescriptionKey: "Note not found"])
-                    DispatchQueue.main.async {
-                        onFailure(notFound)
-                    }
+                    onFailure(notFound)
                 }
             } catch {
                 Logger.debug("Delete error: \(error)")
-                DispatchQueue.main.async {
-                    onFailure(error)
-                }
+                onFailure(error)
             }
         }
     }
-
 }

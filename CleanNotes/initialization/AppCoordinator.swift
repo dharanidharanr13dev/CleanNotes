@@ -9,7 +9,7 @@ protocol CoordinatorContract: AnyObject {
 }
 
 protocol NoteListCoordinatorContract: AnyObject {
-    func showNoteDetail(_ note: NoteModel?)
+    func showNoteDetail(_ note: Note?)
 }
 
 protocol NoteDetailCoordinatorContract: AnyObject {
@@ -38,7 +38,7 @@ class AppCoordinator: CoordinatorContract, NoteListCoordinatorContract, NoteDeta
         navigationController.pushViewController(listVC, animated: false)
     }
     
-    func showNoteDetail(_ note: NoteModel?) {
+    func showNoteDetail(_ note: Note?) {
         let detailVC = assembler.makeNoteDetailViewController(note: note, coordinator: self)
         navigationController.pushViewController(detailVC, animated: true)
     }

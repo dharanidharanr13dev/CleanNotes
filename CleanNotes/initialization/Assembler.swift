@@ -8,12 +8,12 @@ public final class Assembler: AssemblerContract {
 
     private let databaseService: NoteDatabaseService
     private let networkService: NoteNetworkService
-    private let dataManager: NoteDataManager
+    private let dataManager: NoteRepository
 
     private init() {
         self.databaseService = NoteDatabaseService()
         self.networkService = NoteNetworkService()
-        self.dataManager = NoteDataManager(
+        self.dataManager = NoteRepository(
             database: databaseService,
             network: networkService
         )
@@ -27,7 +27,7 @@ public final class Assembler: AssemblerContract {
         return (vc, viewModel)
     }
 
-    func makeNoteDetailViewController(note: NoteModel?, coordinator: NoteDetailCoordinatorContract) -> NoteDetailViewController {
+    func makeNoteDetailViewController(note: Note?, coordinator: NoteDetailCoordinatorContract) -> NoteDetailViewController {
         let saveNoteUsecase = SaveNoteUsecase(dataManager: dataManager)
         let deleteNoteUsecase = DeleteNoteUsecase(dataManager: dataManager)
         let viewModel = NoteDetailViewModel(saveNoteUsecase: saveNoteUsecase, deleteNoteUsecase: deleteNoteUsecase, coordinator: coordinator)

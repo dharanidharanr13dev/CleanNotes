@@ -15,9 +15,9 @@ public class DeleteNoteUsecaseResponse: Response {
 
 
 public class DeleteNoteUsecase: ParentUsecase {
-    var dataManager: NoteDataManagerContract
-    public init(dataManager: NoteDataManagerContract) {
-        self.dataManager = dataManager
+    var repository: NoteRepositoryContract
+    public init(dataManager: NoteRepositoryContract) {
+        self.repository = dataManager
         super.init()
     }
 
@@ -25,7 +25,7 @@ public class DeleteNoteUsecase: ParentUsecase {
         guard let id = (request as? DeleteNoteUsecaseRequest)?.id else {
             fatalError("Invalid DeleteNoteUsecaseRequest request")
         }
-        dataManager.deleteNote(id: id) {
+        repository.deleteNote(id: id) {
             let response = DeleteNoteUsecaseResponse()
             self.invokeSuccess(response: response, onSuccess: onSuccess)
         } onFailure: { error in

@@ -9,7 +9,7 @@ public struct NotePresentationModel {
     public let detailText: NSAttributedString
     public let createdDate: String
 
-    public init(note: NoteModel) {
+    public init(note: Note) {
         self.id = note.id
         self.createdDate = note.createdDate.isoToFormatted() ?? ""
 

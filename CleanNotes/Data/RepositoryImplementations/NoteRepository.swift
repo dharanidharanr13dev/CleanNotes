@@ -2,7 +2,7 @@
 import Foundation
 
 
-public class NoteDataManager: NoteDataManagerContract {
+public class NoteRepository: NoteRepositoryContract {
     
     private var database: NoteDatabaseServiceContract
     private var network: NoteNetworkServiceContract
@@ -12,7 +12,7 @@ public class NoteDataManager: NoteDataManagerContract {
         self.network = network  
     }
 
-    public func getNoteList(onSuccess: @escaping ([NoteModel]) -> Void, onFailure: @escaping (Error) -> Void) {
+    public func getNoteList(onSuccess: @escaping ([Note]) -> Void, onFailure: @escaping (Error) -> Void) {
         database.getNoteList { [weak self] notes in
             guard let self else { return }
             if !notes.isEmpty {
@@ -39,7 +39,7 @@ public class NoteDataManager: NoteDataManagerContract {
         }
     }
     
-    public func saveNote(note: NoteModel, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
+    public func saveNote(note: Note, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
         database.saveNote(note: note) {
             onSuccess()
         } onFailure: { error in

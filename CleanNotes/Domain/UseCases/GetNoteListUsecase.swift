@@ -7,22 +7,22 @@ public class GetNoteListUsecaseRequest: Request {
 }
 
 public class GetNoteListUsecaseResponse: Response {
-    public let notes: [NoteModel]
-    public init(notes: [NoteModel]) {
+    public let notes: [Note]
+    public init(notes: [Note]) {
         self.notes = notes
     }
 }
 
 
 public class GetNoteListUsecase: ParentUsecase {
-    var dataManager: NoteDataManagerContract
-    public init(dataManager: NoteDataManagerContract) {
-        self.dataManager = dataManager
+    var repository: NoteRepositoryContract
+    public init(dataManager: NoteRepositoryContract) {
+        self.repository = dataManager
         super.init()
     }
 
     public override func run(request: Request, onSuccess: @escaping (Response) -> Void, onFailure: @escaping (Error) -> Void) {
-        dataManager.getNoteList { notes in
+        repository.getNoteList { notes in
             let response = GetNoteListUsecaseResponse(notes: notes)
             self.invokeSuccess(response: response, onSuccess: onSuccess)
         } onFailure: { error in

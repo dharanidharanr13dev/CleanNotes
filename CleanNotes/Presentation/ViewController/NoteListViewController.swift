@@ -95,7 +95,7 @@ extension NoteListViewController: UITableViewDataSource, UITableViewDelegate {
         let modelData = notesModel[indexPath.row]
         let title = modelData.attributedTitle.string
         let detailText = modelData.detailText.string
-        let model = NoteModel(id: modelData.id, title: title, detail: detailText, createdDate: modelData.createdDate)
+        let model = Note(id: modelData.id, title: title, detail: detailText, createdDate: modelData.createdDate)
         viewModel.showNoteDetail(model)
     }
 }
