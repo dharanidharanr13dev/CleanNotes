@@ -2,28 +2,29 @@
 import Foundation
 
 
-public class SaveNoteUsecaseRequest: Request {
+public struct SaveNoteUsecaseRequest: Request {
     public let note: Note
     public init(note: Note) {
         self.note = note
     }
 }
 
-public class SaveNoteUsecaseResponse: Response {
+public struct SaveNoteUsecaseResponse: Response {
     public init() {}
 }
 
 
-public class SaveNoteUsecase: ParentUsecase {
-    var repository: NoteRepositoryContract
-    public init(dataManager: NoteRepositoryContract) {
-        self.repository = dataManager
+public final class SaveNoteUsecase: ParentUsecase {
+    private let repository: NoteRepositoryContract
+    public init(repository: NoteRepositoryContract) {
+        self.repository = repository
         super.init()
     }
 
     public override func run(request: Request, onSuccess: @escaping (Response) -> Void, onFailure: @escaping (Error) -> Void) {
         guard let note = (request as? SaveNoteUsecaseRequest)?.note else {
-            fatalError("Invalid SaveNoteUsecaseRequest request")
+            onFailure(DomainError.invalidRequest)
+            return
         }
         repository.saveNote(note: note) {
             let response = SaveNoteUsecaseResponse()

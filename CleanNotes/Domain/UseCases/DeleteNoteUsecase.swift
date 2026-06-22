@@ -2,28 +2,29 @@
 import Foundation
 
 
-public class DeleteNoteUsecaseRequest: Request {
+public struct DeleteNoteUsecaseRequest: Request {
     public let id: String
     public init(id: String) {
         self.id = id
     }
 }
 
-public class DeleteNoteUsecaseResponse: Response {
+public struct DeleteNoteUsecaseResponse: Response {
     public init() {}
 }
 
 
-public class DeleteNoteUsecase: ParentUsecase {
-    var repository: NoteRepositoryContract
-    public init(dataManager: NoteRepositoryContract) {
-        self.repository = dataManager
+public final class DeleteNoteUsecase: ParentUsecase {
+    private let repository: NoteRepositoryContract
+    public init(repository: NoteRepositoryContract) {
+        self.repository = repository
         super.init()
     }
 
     public override func run(request: Request, onSuccess: @escaping (Response) -> Void, onFailure: @escaping (Error) -> Void) {
         guard let id = (request as? DeleteNoteUsecaseRequest)?.id else {
-            fatalError("Invalid DeleteNoteUsecaseRequest request")
+            onFailure(DomainError.invalidRequest)
+            return
         }
         repository.deleteNote(id: id) {
             let response = DeleteNoteUsecaseResponse()

@@ -2,36 +2,49 @@
 import Foundation
 
 
-public class NoteRepository: NoteRepositoryContract {
+public final class NoteRepository: NoteRepositoryContract {
     
-    private var database: NoteDatabaseServiceContract
-    private var network: NoteNetworkServiceContract
-
-    init(database: NoteDatabaseServiceContract, network: NoteNetworkServiceContract) {
+    private let database: NoteDatabaseServiceContract
+    private let network: NoteNetworkServiceContract
+    
+    public init(database: NoteDatabaseServiceContract, network: NoteNetworkServiceContract) {
         self.database = database
-        self.network = network  
+        self.network = network
     }
+}
 
+
+extension NoteRepository {
     public func getNoteList(onSuccess: @escaping ([Note]) -> Void, onFailure: @escaping (Error) -> Void) {
-        database.getNoteList { [weak self] notes in
+        database.getNoteList { [weak self] localNoteDTOs in
             guard let self else { return }
-            if !notes.isEmpty {
+            let notes = localNoteDTOs.map {
+                NoteLocalMapper.toDomain(dto: $0)
+            }
+            guard notes.isEmpty else {
                 onSuccess(notes)
-            } else {
-                self.network.fetchRemoteNotes(limit: 1) { [weak self] notes in
-                    guard let self else { return }
-                    database.saveNotes(notes) {
-                        onSuccess(notes)
-                    } onFailure: { error in
-                        onFailure(error)
-                    }
-                 } onFailure: { error in
-                     onFailure(error)
-                 }
+                return
+            }
+            self.network.fetchRemoteNotes(limit: 1) { [weak self] remoteNoteDTOs in
+                guard let self else { return }
+                let notes = remoteNoteDTOs.map {
+                    NoteRemoteMapper.toDomain(dto: $0)
+                }
+                let localDTOs = notes.map { NoteLocalMapper.toDTO(note: $0) }
+                database.saveNoteList(localDTOs) {
+                    onSuccess(notes)
+                } onFailure: { error in
+                    onFailure(error)
+                }
+            } onFailure: { error in
+                onFailure(error)
             }
         } onFailure: { [weak self] error in
             guard let self else { return }
-            self.network.fetchRemoteNotes(limit: 5) { notes in
+            self.network.fetchRemoteNotes(limit: 1) { remoteNoteDTOs in
+                let notes = remoteNoteDTOs.map {
+                    NoteRemoteMapper.toDomain(dto: $0)
+                }
                 onSuccess(notes)
             } onFailure: { error in
                 onFailure(error)
@@ -40,7 +53,8 @@ public class NoteRepository: NoteRepositoryContract {
     }
     
     public func saveNote(note: Note, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
-        database.saveNote(note: note) {
+        let localDTO = NoteLocalMapper.toDTO(note: note)
+        database.saveNote(localDTO) {
             onSuccess()
         } onFailure: { error in
             onFailure(error)
@@ -52,6 +66,6 @@ public class NoteRepository: NoteRepositoryContract {
             onSuccess()
         } onFailure: { error in
             onFailure(error)
-        }    
+        }
     }
 }

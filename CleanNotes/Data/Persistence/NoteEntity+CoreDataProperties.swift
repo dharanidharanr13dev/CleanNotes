@@ -12,7 +12,7 @@ extension NoteEntity {
     @NSManaged public var id: String?
     @NSManaged public var detail: String?
     @NSManaged public var title: String?
-    @NSManaged public var createdDate: String?
+    @NSManaged public var createdDate: Date?
 
 }
 

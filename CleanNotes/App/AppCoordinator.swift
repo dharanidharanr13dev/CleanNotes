@@ -13,8 +13,8 @@ protocol NoteListCoordinatorContract: AnyObject {
 }
 
 protocol NoteDetailCoordinatorContract: AnyObject {
-    func didFinishEditingNote()
-    func popToNoteListPage()
+    func didSaveNote()
+    func didCancelEditing()
 }
 
 
@@ -23,7 +23,6 @@ protocol NoteDetailCoordinatorContract: AnyObject {
 class AppCoordinator: CoordinatorContract, NoteListCoordinatorContract, NoteDetailCoordinatorContract {
 
     var navigationController: UINavigationController
-    private weak var noteListViewModel: NoteListViewModel?
     private let assembler: AssemblerContract
     
     init(navigationController: UINavigationController, assembler: AssemblerContract) {
@@ -32,23 +31,20 @@ class AppCoordinator: CoordinatorContract, NoteListCoordinatorContract, NoteDeta
     }
     
     func start() {
-        let module = assembler.makeNoteListModule(coordinator: self)
-        let listVC = module.vc
-        noteListViewModel = module.viewModel
-        navigationController.pushViewController(listVC, animated: false)
+        let vc = assembler.makeNoteListViewController(coordinator: self)
+        navigationController.pushViewController(vc, animated: false)
     }
     
     func showNoteDetail(_ note: Note?) {
-        let detailVC = assembler.makeNoteDetailViewController(note: note, coordinator: self)
-        navigationController.pushViewController(detailVC, animated: true)
+        let vc = assembler.makeNoteDetailViewController(note: note, coordinator: self)
+        navigationController.pushViewController(vc, animated: true)
     }
     
-    func didFinishEditingNote() {
+    func didSaveNote() {
         navigationController.popViewController(animated: true)
-        noteListViewModel?.refreshNotes()
     }
     
-    func popToNoteListPage() {
+    func didCancelEditing() {
         navigationController.popViewController(animated: true)
     }
 }

@@ -11,9 +11,10 @@ final class NoteDetailViewController: UIViewController {
     @IBOutlet weak var detailHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var deleteNoteButton: UIButton!
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .medium)
     internal var viewModel: NoteDetailViewModelContract
     private var note: Note?
-    private var createdDate: String?
+    private var createdDate: Date?
     
     init(viewModel: NoteDetailViewModelContract, note: Note? = nil) {
         self.note = note
@@ -27,6 +28,7 @@ final class NoteDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindViewModel()
         titleTextView.isScrollEnabled = false
         detailTextView.isScrollEnabled = false
         titleTextView.delegate = self
@@ -36,19 +38,44 @@ final class NoteDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         textViewDidChange(titleTextView)
         textViewDidChange(detailTextView)
     }
     
+    private func bindViewModel() {
+        viewModel.stateDidChange = { [weak self] state in
+            guard let self else { return }
+            switch state {
+                case .loading:
+                    loadingIndicator.startAnimating()
+                case .saveSuccess:
+                    loadingIndicator.stopAnimating()
+                    Logger.debug("Note saved Successfully")
+                    viewModel.didSaveNote()
+                case .deleteSuccess:
+                    loadingIndicator.stopAnimating()
+                    Logger.debug("Note deleted Successfully")
+                    viewModel.didSaveNote()
+                case .validationError(let message):
+                    loadingIndicator.stopAnimating()
+                    showValidationMessage(message)
+                case .error(let message):
+                    loadingIndicator.stopAnimating()
+                    showError(message)
+            }
+        }
+    }
+    
     private func populate() {
         guard let note = self.note else {
-            self.createdDate = Date().isoString
-            createdTimeLabel.text = self.createdDate?.isoToFormatted()
+            createdDate = Date()
+            createdTimeLabel.text = createdDate?.formattedString()
             deleteNoteButton.isHidden = true
             return
         }
         titleTextView.text = note.title
-        createdTimeLabel.text = note.createdDate
+        createdTimeLabel.text = note.createdDate.formattedString()
         detailTextView.text = note.detail
     }
     
@@ -70,43 +97,24 @@ final class NoteDetailViewController: UIViewController {
     }
     
     @IBAction func backButtonTapped() {
-        let titleText = (titleTextView.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        let detailText = (detailTextView.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        if titleText.isEmpty && !(detailText.isEmpty) {
-            let alert = UIAlertController(title: "Validation", message: "Please enter a title.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
-            return
-        }
-        
-        if titleText.isEmpty && detailText.isEmpty {
-            viewModel.popToNoteListPage()
-            return
-        }
-        let idToUse = note?.id ?? UUID().uuidString
-        let newNote = Note(
-            id: idToUse,
-            title: titleText,
-            detail: detailText,
-            createdDate: (note?.createdDate ?? self.createdDate) ?? Date().isoString
-        )
-        viewModel.saveNote(note: newNote)
+        viewModel.didTapBack(title: titleTextView.text ?? "", detail: detailTextView.text ?? "", existingNote: note, createdDate: createdDate)
     }
 }
 
 
 
 
-extension NoteDetailViewController: NoteDetailViewControllerContract {
-    func showSuccessToast(_ message: String) {
-        Logger.debug(message)
-        viewModel.loadNoteListPage()
-    }
-    
+extension NoteDetailViewController {
     func showError(_ message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true)
+    }
+    
+    func showValidationMessage(_ message: String) {
+        let alert = UIAlertController(title: "Validation", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }
 
@@ -120,7 +128,7 @@ extension NoteDetailViewController: UITextViewDelegate {
             let newSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: .greatestFiniteMagnitude))
             titleHeightConstraint.constant = newSize.height
         } else if textView == detailTextView {
-            detailTextView.placeholder = (detailTextView.text.isEmpty) ? "Detail" : nil
+            detailTextView.placeholder = (detailTextView.text.isEmpty) ? "Description" : nil
             let newSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: .greatestFiniteMagnitude))
             detailHeightConstraint.constant = newSize.height
         }

@@ -3,13 +3,11 @@ import UIKit
 
 
 public final class Assembler: AssemblerContract {
-
-    public static let shared = Assembler()
-
     private let databaseService: NoteDatabaseService
     private let networkService: NoteNetworkService
     private let dataManager: NoteRepository
 
+    public static let shared = Assembler()
     private init() {
         self.databaseService = NoteDatabaseService()
         self.networkService = NoteNetworkService()
@@ -19,20 +17,18 @@ public final class Assembler: AssemblerContract {
         )
     }
 
-    func makeNoteListModule(coordinator: NoteListCoordinatorContract) -> (vc: NoteListViewController, viewModel: NoteListViewModel) {
-        let getNoteListUsecase = GetNoteListUsecase(dataManager: dataManager)
+    func makeNoteListViewController(coordinator: NoteListCoordinatorContract) -> NoteListViewController {
+        let getNoteListUsecase = GetNoteListUsecase(repository: dataManager)
         let viewModel = NoteListViewModel(getNoteListUsecase: getNoteListUsecase, coordinator: coordinator)
         let vc = NoteListViewController(viewModel: viewModel)
-        viewModel.viewController = vc
-        return (vc, viewModel)
+        return vc
     }
 
     func makeNoteDetailViewController(note: Note?, coordinator: NoteDetailCoordinatorContract) -> NoteDetailViewController {
-        let saveNoteUsecase = SaveNoteUsecase(dataManager: dataManager)
-        let deleteNoteUsecase = DeleteNoteUsecase(dataManager: dataManager)
+        let saveNoteUsecase = SaveNoteUsecase(repository: dataManager)
+        let deleteNoteUsecase = DeleteNoteUsecase(repository: dataManager)
         let viewModel = NoteDetailViewModel(saveNoteUsecase: saveNoteUsecase, deleteNoteUsecase: deleteNoteUsecase, coordinator: coordinator)
         let vc = NoteDetailViewController(viewModel: viewModel, note: note)
-        viewModel.viewController = vc
         return vc
     }
 }

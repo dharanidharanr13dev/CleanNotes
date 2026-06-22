@@ -45,10 +45,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTh-KJ-03q">
-                            <rect key="frame" x="12" y="52" width="369" height="35"/>
+                            <rect key="frame" x="12" y="52" width="369" height="40"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G9T-SG-7S0">
-                                    <rect key="frame" x="8" y="8.6666666666666536" width="20" height="18.333333333333336"/>
+                                    <rect key="frame" x="8" y="10.999999999999996" width="20" height="18.333333333333336"/>
                                     <color key="tintColor" systemColor="systemYellowColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="SJp-DB-qcw"/>
@@ -56,14 +56,14 @@
                                     </constraints>
                                 </imageView>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P93-6e-KqV">
-                                    <rect key="frame" x="35" y="7" width="326" height="21"/>
+                                    <rect key="frame" x="35" y="9.6666666666666572" width="326" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="P93-6e-KqV" firstAttribute="centerY" secondItem="oTh-KJ-03q" secondAttribute="centerY" id="6Th-zO-OEg"/>
-                                <constraint firstAttribute="height" constant="35" id="Jwf-Fv-iBl"/>
+                                <constraint firstAttribute="height" constant="40" id="Jwf-Fv-iBl"/>
                                 <constraint firstItem="G9T-SG-7S0" firstAttribute="centerY" secondItem="oTh-KJ-03q" secondAttribute="centerY" id="N6k-q3-H61"/>
                                 <constraint firstItem="P93-6e-KqV" firstAttribute="leading" secondItem="G9T-SG-7S0" secondAttribute="trailing" constant="7" id="Spn-lw-NQY"/>
                                 <constraint firstItem="G9T-SG-7S0" firstAttribute="leading" secondItem="oTh-KJ-03q" secondAttribute="leading" constant="8" id="oRK-l4-lGO"/>
@@ -71,7 +71,7 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YQ9-fx-rKp">
-                            <rect key="frame" x="12" y="107" width="369" height="559"/>
+                            <rect key="frame" x="12" y="112" width="369" height="554"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Mw-wh-qtM">
@@ -89,7 +89,7 @@
                                         <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                     </state>
                                     <connections>
-                                        <action selector="addButtonTapped" destination="-1" eventType="touchUpInside" id="0lY-My-dmg"/>
+                                        <action selector="didTapAddNote" destination="-1" eventType="touchUpInside" id="0lY-My-dmg"/>
                                     </connections>
                                 </button>
                             </subviews>

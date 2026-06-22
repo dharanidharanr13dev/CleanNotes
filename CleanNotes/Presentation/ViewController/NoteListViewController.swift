@@ -11,6 +11,7 @@ final class NoteListViewController: UIViewController, UITextFieldDelegate {
     
     internal var viewModel: NoteListViewModelContract
     private var notesModel: [NotePresentationModel] = []
+    private let loadingIndicator = UIActivityIndicatorView(style: .medium)
     
     init(viewModel: NoteListViewModelContract) {
         self.viewModel = viewModel
@@ -21,8 +22,14 @@ final class NoteListViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindViewModel()
         initialSetUp()
         setupKeyboardDismissGesture()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getNotes()
     }
     
     func initialSetUp() {
@@ -41,23 +48,32 @@ final class NoteListViewController: UIViewController, UITextFieldDelegate {
         addNoteView.layer.cornerRadius = 25
         addNoteView.layer.borderWidth = 1.5
         addNoteView.layer.borderColor = UIColor.systemBackground.cgColor
-        viewModel.getNotes()
     }
     
+    @IBAction func didTapAddNote() {
+        viewModel.didTapAddNote()
+    }
     @objc private func textDidChange(_ textField: UITextField) {
         viewModel.searchNotes(textField.text ?? "")
     }
     
-    @IBAction func addButtonTapped() {
-        viewModel.showNoteDetail(nil)
+    private func bindViewModel() {
+        viewModel.stateDidChange = { [weak self] state in
+            guard let self else { return }
+            switch state {
+            case .loading:
+                loadingIndicator.startAnimating()
+            case .loaded(let notes):
+                loadingIndicator.stopAnimating()
+                self.loadNotes(notes)
+            case .error(let message):
+                loadingIndicator.stopAnimating()
+                self.showError(message)
+            }
+        }
     }
-}
-
-
-
-
-extension NoteListViewController: NoteListViewControllerContract {
-    func loadNotes(_ notes: [NotePresentationModel]) {
+    
+    private func loadNotes(_ notes: [NotePresentationModel]) {
         self.notesModel = notes
         if notes.isEmpty {
             noteListTableView.setEmptyMessage("No Notes Found !")
@@ -67,7 +83,7 @@ extension NoteListViewController: NoteListViewControllerContract {
         self.noteListTableView.reloadData()
     }
 
-    func showError(_ message: String) {
+    private func showError(_ message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true)
@@ -92,10 +108,6 @@ extension NoteListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let modelData = notesModel[indexPath.row]
-        let title = modelData.attributedTitle.string
-        let detailText = modelData.detailText.string
-        let model = Note(id: modelData.id, title: title, detail: detailText, createdDate: modelData.createdDate)
-        viewModel.showNoteDetail(model)
+        viewModel.didSelectRow(at: indexPath.row)
     }
 }

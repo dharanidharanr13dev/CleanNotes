@@ -2,11 +2,11 @@
 import Foundation
 
 
-public class GetNoteListUsecaseRequest: Request {
+public struct GetNoteListUsecaseRequest: Request {
     public init() {}
 }
 
-public class GetNoteListUsecaseResponse: Response {
+public struct GetNoteListUsecaseResponse: Response {
     public let notes: [Note]
     public init(notes: [Note]) {
         self.notes = notes
@@ -14,10 +14,10 @@ public class GetNoteListUsecaseResponse: Response {
 }
 
 
-public class GetNoteListUsecase: ParentUsecase {
-    var repository: NoteRepositoryContract
-    public init(dataManager: NoteRepositoryContract) {
-        self.repository = dataManager
+public final class GetNoteListUsecase: ParentUsecase {
+    private let repository: NoteRepositoryContract
+    public init(repository: NoteRepositoryContract) {
+        self.repository = repository
         super.init()
     }
 

@@ -11,7 +11,7 @@ public struct NotePresentationModel {
 
     public init(note: Note) {
         self.id = note.id
-        self.createdDate = note.createdDate.isoToFormatted() ?? ""
+        self.createdDate = note.createdDate.formatted()
 
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 17)

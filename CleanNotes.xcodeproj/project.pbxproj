@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		811917762EA9F86800F60816 /* NoteListViewModelContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811917752EA9F86800F60816 /* NoteListViewModelContract.swift */; };
-		811917782EA9F9DE00F60816 /* NoteListViewControllerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811917772EA9F9DE00F60816 /* NoteListViewControllerContract.swift */; };
 		8133DA472EA3AAD500FA14FE /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133DA462EA3AAD500FA14FE /* AppCoordinator.swift */; };
 		81457DBE2EACA07B008371C6 /* SaveNoteUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81457DBD2EACA07B008371C6 /* SaveNoteUsecase.swift */; };
 		81457DC02EACA62F008371C6 /* NoteDetailViewModelContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81457DBF2EACA62F008371C6 /* NoteDetailViewModelContract.swift */; };
 		81457DC22EACA669008371C6 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81457DC12EACA669008371C6 /* NoteDetailViewModel.swift */; };
-		81457DC42EACA786008371C6 /* NoteDetailViewControllerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81457DC32EACA786008371C6 /* NoteDetailViewControllerContract.swift */; };
 		81457DC62EACCB73008371C6 /* DeleteNoteUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81457DC52EACCB73008371C6 /* DeleteNoteUsecase.swift */; };
 		81457DC82EACD06A008371C6 /* NoteDatabaseServiceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81457DC72EACD06A008371C6 /* NoteDatabaseServiceContract.swift */; };
 		81457DCA2EACD0A5008371C6 /* NoteNetworkServiceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81457DC92EACD0A5008371C6 /* NoteNetworkServiceContract.swift */; };
@@ -43,6 +41,13 @@
 		81D898792EAF5F1E003FE2C3 /* AssemblerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D898782EAF5F1E003FE2C3 /* AssemblerContract.swift */; };
 		DA0E3D132EF2543200F1FA5D /* NoteRepositoryContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E3D122EF2543200F1FA5D /* NoteRepositoryContract.swift */; };
 		DA15FC752ED6C1F600422DAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15FC742ED6C1F600422DAD /* UIViewController+Extension.swift */; };
+		DA6C87CE2FE997C300702073 /* NoteLocalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C87CC2FE997C300702073 /* NoteLocalDTO.swift */; };
+		DA6C87D12FE997C600702073 /* NoteRemoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C87CF2FE997C600702073 /* NoteRemoteDTO.swift */; };
+		DA6C87D32FE997D700702073 /* NoteRemoteMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C87D22FE997D700702073 /* NoteRemoteMapper.swift */; };
+		DA6C87D52FE997E000702073 /* NoteLocalMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C87D42FE997E000702073 /* NoteLocalMapper.swift */; };
+		DA6C87D72FE997E800702073 /* NoteEntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C87D62FE997E800702073 /* NoteEntityMapper.swift */; };
+		DA6C87D92FE99A1700702073 /* NoteListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C87D82FE99A1700702073 /* NoteListViewState.swift */; };
+		DA6C87DB2FE99A3500702073 /* NoteDetailViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C87DA2FE99A3500702073 /* NoteDetailViewState.swift */; };
 		DAD2B6062ED4E3C5004B483D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2B6052ED4E3C5004B483D /* Date+Extension.swift */; };
 		DAD2B60C2ED5AD58004B483D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2B60B2ED5AD58004B483D /* String+Extension.swift */; };
 		DAD2B6222ED60759004B483D /* CleanNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAD2B6202ED60759004B483D /* CleanNotes.xcdatamodeld */; };
@@ -52,12 +57,10 @@
 
 /* Begin PBXFileReference section */
 		811917752EA9F86800F60816 /* NoteListViewModelContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModelContract.swift; sourceTree = "<group>"; };
-		811917772EA9F9DE00F60816 /* NoteListViewControllerContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewControllerContract.swift; sourceTree = "<group>"; };
 		8133DA462EA3AAD500FA14FE /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		81457DBD2EACA07B008371C6 /* SaveNoteUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNoteUsecase.swift; sourceTree = "<group>"; };
 		81457DBF2EACA62F008371C6 /* NoteDetailViewModelContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModelContract.swift; sourceTree = "<group>"; };
 		81457DC12EACA669008371C6 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
-		81457DC32EACA786008371C6 /* NoteDetailViewControllerContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewControllerContract.swift; sourceTree = "<group>"; };
 		81457DC52EACCB73008371C6 /* DeleteNoteUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteNoteUsecase.swift; sourceTree = "<group>"; };
 		81457DC72EACD06A008371C6 /* NoteDatabaseServiceContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatabaseServiceContract.swift; sourceTree = "<group>"; };
 		81457DC92EACD0A5008371C6 /* NoteNetworkServiceContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteNetworkServiceContract.swift; sourceTree = "<group>"; };
@@ -89,6 +92,13 @@
 		81D898782EAF5F1E003FE2C3 /* AssemblerContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblerContract.swift; sourceTree = "<group>"; };
 		DA0E3D122EF2543200F1FA5D /* NoteRepositoryContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepositoryContract.swift; sourceTree = "<group>"; };
 		DA15FC742ED6C1F600422DAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		DA6C87CC2FE997C300702073 /* NoteLocalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLocalDTO.swift; sourceTree = "<group>"; };
+		DA6C87CF2FE997C600702073 /* NoteRemoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRemoteDTO.swift; sourceTree = "<group>"; };
+		DA6C87D22FE997D700702073 /* NoteRemoteMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRemoteMapper.swift; sourceTree = "<group>"; };
+		DA6C87D42FE997E000702073 /* NoteLocalMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLocalMapper.swift; sourceTree = "<group>"; };
+		DA6C87D62FE997E800702073 /* NoteEntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntityMapper.swift; sourceTree = "<group>"; };
+		DA6C87D82FE99A1700702073 /* NoteListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewState.swift; sourceTree = "<group>"; };
+		DA6C87DA2FE99A3500702073 /* NoteDetailViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewState.swift; sourceTree = "<group>"; };
 		DAD2B6052ED4E3C5004B483D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DAD2B60B2ED5AD58004B483D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		DAD2B6212ED60759004B483D /* CleanNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CleanNotes.xcdatamodel; sourceTree = "<group>"; };
@@ -145,7 +155,7 @@
 		81A3F7FD2EA0F5CD00C29EC5 /* CleanNotes */ = {
 			isa = PBXGroup;
 			children = (
-				81A3F8462EA1037100C29EC5 /* initialization */,
+				81A3F8462EA1037100C29EC5 /* App */,
 				81A3F8452EA1036A00C29EC5 /* Presentation */,
 				81A3F8442EA1036700C29EC5 /* Domain */,
 				81A3F8432EA1035F00C29EC5 /* Data */,
@@ -158,10 +168,12 @@
 		81A3F8432EA1035F00C29EC5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				DA6C87BF2FE9974600702073 /* DTOs */,
+				DA6C87C02FE9974F00702073 /* Mappers */,
 				81A3F84E2EA1047300C29EC5 /* RepositoryImplementations */,
 				81A3F84F2EA1048800C29EC5 /* Local */,
 				81A3F8502EA104D900C29EC5 /* Remote */,
-				81A3F8512EA105F600C29EC5 /* CoreDataService */,
+				81A3F8512EA105F600C29EC5 /* Persistence */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -182,12 +194,12 @@
 				81A3F8472EA103A300C29EC5 /* ViewController */,
 				81A3F8492EA103B200C29EC5 /* ViewModel */,
 				81A3F84A2EA103BA00C29EC5 /* PresentationModel */,
-				81A3F8482EA103AC00C29EC5 /* CustomView */,
+				81A3F8482EA103AC00C29EC5 /* Views */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		81A3F8462EA1037100C29EC5 /* initialization */ = {
+		81A3F8462EA1037100C29EC5 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				81A3F8162EA0F60C00C29EC5 /* AppDelegate.swift */,
@@ -196,7 +208,7 @@
 				81A3F8192EA0F61900C29EC5 /* Assembler.swift */,
 				81D898782EAF5F1E003FE2C3 /* AssemblerContract.swift */,
 			);
-			path = initialization;
+			path = App;
 			sourceTree = "<group>";
 		};
 		81A3F8472EA103A300C29EC5 /* ViewController */ = {
@@ -204,29 +216,29 @@
 			children = (
 				81A3F8332EA0F66800C29EC5 /* NoteListViewController.swift */,
 				81B331552EA8C6FE0061B160 /* NoteListViewController.xib */,
-				811917772EA9F9DE00F60816 /* NoteListViewControllerContract.swift */,
 				81B3314D2EA8A9220061B160 /* NoteDetailViewController.swift */,
 				81B3315D2EA8DB520061B160 /* NoteDetailViewController.xib */,
-				81457DC32EACA786008371C6 /* NoteDetailViewControllerContract.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		81A3F8482EA103AC00C29EC5 /* CustomView */ = {
+		81A3F8482EA103AC00C29EC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				81B331582EA8C8390061B160 /* NoteTableViewCell.swift */,
 				81B331592EA8C8390061B160 /* NoteTableViewCell.xib */,
 			);
-			path = CustomView;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		81A3F8492EA103B200C29EC5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				81A3F8342EA0F66800C29EC5 /* NoteListViewModel.swift */,
+				DA6C87D82FE99A1700702073 /* NoteListViewState.swift */,
 				811917752EA9F86800F60816 /* NoteListViewModelContract.swift */,
 				81457DC12EACA669008371C6 /* NoteDetailViewModel.swift */,
+				DA6C87DA2FE99A3500702073 /* NoteDetailViewState.swift */,
 				81457DBF2EACA62F008371C6 /* NoteDetailViewModelContract.swift */,
 			);
 			path = ViewModel;
@@ -285,7 +297,7 @@
 			path = Remote;
 			sourceTree = "<group>";
 		};
-		81A3F8512EA105F600C29EC5 /* CoreDataService */ = {
+		81A3F8512EA105F600C29EC5 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
 				81A3F81C2EA0F62D00C29EC5 /* CoreDataService.swift */,
@@ -293,7 +305,7 @@
 				DAD2B6242ED6078A004B483D /* NoteEntity+CoreDataProperties.swift */,
 				DAD2B6202ED60759004B483D /* CleanNotes.xcdatamodeld */,
 			);
-			path = CoreDataService;
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		81B331512EA8C5AA0061B160 /* Extension */ = {
@@ -314,6 +326,41 @@
 				DA0E3D122EF2543200F1FA5D /* NoteRepositoryContract.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		DA6C87BF2FE9974600702073 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				DA6C87CD2FE997C300702073 /* Local */,
+				DA6C87D02FE997C600702073 /* Remote */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		DA6C87C02FE9974F00702073 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				DA6C87D62FE997E800702073 /* NoteEntityMapper.swift */,
+				DA6C87D42FE997E000702073 /* NoteLocalMapper.swift */,
+				DA6C87D22FE997D700702073 /* NoteRemoteMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		DA6C87CD2FE997C300702073 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				DA6C87CC2FE997C300702073 /* NoteLocalDTO.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		DA6C87D02FE997C600702073 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				DA6C87CF2FE997C600702073 /* NoteRemoteDTO.swift */,
+			);
+			path = Remote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,13 +441,14 @@
 				8182EF0F2EA10CC30094235D /* Logger.swift in Sources */,
 				81A3F8422EA1020900C29EC5 /* NotePresentationModel.swift in Sources */,
 				81457DC82EACD06A008371C6 /* NoteDatabaseServiceContract.swift in Sources */,
-				811917782EA9F9DE00F60816 /* NoteListViewControllerContract.swift in Sources */,
 				81A3F8202EA0F62D00C29EC5 /* NoteRepository.swift in Sources */,
 				81457DC62EACCB73008371C6 /* DeleteNoteUsecase.swift in Sources */,
 				DA0E3D132EF2543200F1FA5D /* NoteRepositoryContract.swift in Sources */,
 				81B3315A2EA8C8390061B160 /* NoteTableViewCell.swift in Sources */,
 				81A3F8322EA0F65200C29EC5 /* Note.swift in Sources */,
 				81A3F81A2EA0F61900C29EC5 /* Assembler.swift in Sources */,
+				DA6C87D72FE997E800702073 /* NoteEntityMapper.swift in Sources */,
+				DA6C87D92FE99A1700702073 /* NoteListViewState.swift in Sources */,
 				DAD2B6252ED6078A004B483D /* NoteEntity+CoreDataClass.swift in Sources */,
 				DAD2B6262ED6078A004B483D /* NoteEntity+CoreDataProperties.swift in Sources */,
 				81B331632EA8F3240061B160 /* UITextView+Extension.swift in Sources */,
@@ -408,15 +456,19 @@
 				81457DBE2EACA07B008371C6 /* SaveNoteUsecase.swift in Sources */,
 				81A3F8212EA0F62D00C29EC5 /* CoreDataService.swift in Sources */,
 				81A3F8372EA0F66800C29EC5 /* NoteListViewModel.swift in Sources */,
-				81457DC42EACA786008371C6 /* NoteDetailViewControllerContract.swift in Sources */,
+				DA6C87D12FE997C600702073 /* NoteRemoteDTO.swift in Sources */,
 				811917762EA9F86800F60816 /* NoteListViewModelContract.swift in Sources */,
 				81457DCA2EACD0A5008371C6 /* NoteNetworkServiceContract.swift in Sources */,
 				81A3F8242EA0F62D00C29EC5 /* NoteDatabaseService.swift in Sources */,
 				8133DA472EA3AAD500FA14FE /* AppCoordinator.swift in Sources */,
 				81A3F82B2EA0F63E00C29EC5 /* ParentUsecase.swift in Sources */,
 				81A3F82C2EA0F63E00C29EC5 /* GetNoteListUsecase.swift in Sources */,
+				DA6C87D32FE997D700702073 /* NoteRemoteMapper.swift in Sources */,
 				81457DC22EACA669008371C6 /* NoteDetailViewModel.swift in Sources */,
+				DA6C87DB2FE99A3500702073 /* NoteDetailViewState.swift in Sources */,
+				DA6C87CE2FE997C300702073 /* NoteLocalDTO.swift in Sources */,
 				DAD2B6062ED4E3C5004B483D /* Date+Extension.swift in Sources */,
+				DA6C87D52FE997E000702073 /* NoteLocalMapper.swift in Sources */,
 				81457DC02EACA62F008371C6 /* NoteDetailViewModelContract.swift in Sources */,
 				81A3F8232EA0F62D00C29EC5 /* NoteNetworkService.swift in Sources */,
 				DAD2B60C2ED5AD58004B483D /* String+Extension.swift in Sources */,

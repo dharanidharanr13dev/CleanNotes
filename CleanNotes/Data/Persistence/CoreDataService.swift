@@ -19,17 +19,6 @@ public final class CoreDataService {
     }
 
     public var viewContext: NSManagedObjectContext { persistentContainer.viewContext }
-
-    public func saveContext() {
-        let context = viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                Logger.debug("CoreData save failed: \(error)")
-            }
-        }
-    }
     
     public func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         persistentContainer.performBackgroundTask { context in
@@ -58,6 +47,20 @@ public final class CoreDataService {
             DispatchQueue.main.async {
                 completion?()
             }
+        }
+    }
+}
+
+
+
+
+enum DatabaseError: LocalizedError {
+    case noteNotFound
+
+    public var errorDescription: String? {
+        switch self {
+        case .noteNotFound:
+            return "Note not found"
         }
     }
 }

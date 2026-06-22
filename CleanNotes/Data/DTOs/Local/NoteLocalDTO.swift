@@ -2,7 +2,8 @@
 import Foundation
 
 
-public struct Note {
+public struct NoteLocalDTO {
+
     public let id: String
     public let title: String
     public let detail: String

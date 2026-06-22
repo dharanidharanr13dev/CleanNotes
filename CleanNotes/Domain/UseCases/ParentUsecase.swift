@@ -6,7 +6,7 @@ public protocol Request {}
 public protocol Response {}
 
 public class ParentUsecase {
-    let queue = DispatchQueue(label: "ParentUsecaseQueue", attributes: .concurrent)
+    private let queue = DispatchQueue(label: "ParentUsecaseQueue", attributes: .concurrent)
     public init() {}
 
     public func execute(request: Request, onSuccess: @escaping (Response) -> Void, onFailure: @escaping (Error) -> Void) {
@@ -28,5 +28,16 @@ public class ParentUsecase {
         DispatchQueue.main.async {
             onFailure(error)
         }
+    }
+}
+
+
+
+
+public enum DomainError: String, LocalizedError {
+    case invalidRequest = "Invalid request."
+
+    public var errorDescription: String? {
+        rawValue
     }
 }

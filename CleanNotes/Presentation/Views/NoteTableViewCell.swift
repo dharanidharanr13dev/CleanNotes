@@ -12,7 +12,7 @@ class NoteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mainView.layer.cornerRadius = 8
+        mainView.layer.cornerRadius = 12
         titleLabel.numberOfLines = 3
         titleLabel.lineBreakMode = .byTruncatingTail
         detailLabel.numberOfLines = 5

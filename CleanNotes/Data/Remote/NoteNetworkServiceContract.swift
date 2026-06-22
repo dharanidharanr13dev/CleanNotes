@@ -2,6 +2,6 @@
 import Foundation
 
 
-protocol NoteNetworkServiceContract {
-    func fetchRemoteNotes(limit: Int, onSuccess: @escaping ([Note]) -> Void, onFailure: @escaping (NetworkError) -> Void)
+public protocol NoteNetworkServiceContract {
+    func fetchRemoteNotes(limit: Int, onSuccess: @escaping ([NoteRemoteDTO]) -> Void, onFailure: @escaping (Error) -> Void)
 }

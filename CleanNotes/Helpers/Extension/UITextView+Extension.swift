@@ -7,7 +7,6 @@ import ObjectiveC
 private var placeholderLabelKey: UInt8 = 0
 
 extension UITextView {
-
     @IBInspectable var placeholder: String? {
         get {
             return placeholderLabel?.text

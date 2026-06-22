@@ -6,7 +6,7 @@ import CoreData
 public class NoteDatabaseService: NoteDatabaseServiceContract {
     public init() {}
 
-    public func getNoteList(onSuccess: @escaping ([Note]) -> Void, onFailure: @escaping (Error) -> Void) {
+    public func getNoteList(onSuccess: @escaping ([NoteLocalDTO]) -> Void, onFailure: @escaping (Error) -> Void) {
         let context = CoreDataService.shared.viewContext
         context.perform {
             let request: NSFetchRequest<NoteEntity> = NoteEntity.fetchRequest()
@@ -14,14 +14,9 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
                 NSSortDescriptor(key: "createdDate", ascending: false)
             ]
             do {
-                let results = try context.fetch(request)
-                let notes = results.map {
-                    Note(
-                        id: $0.id ?? "",
-                        title: $0.title ?? "",
-                        detail: $0.detail ?? "",
-                        createdDate: $0.createdDate ?? ""
-                    )
+                let entities = try context.fetch(request)
+                let notes = entities.map {
+                    NoteEntityMapper.toLocalDTO(entity: $0)
                 }
                 onSuccess(notes)
             } catch {
@@ -31,14 +26,11 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
         }
     }
 
-    public func saveNotes(_ notes: [Note], onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
+    public func saveNoteList(_ notes: [NoteLocalDTO], onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
         CoreDataService.shared.performBackgroundTask { context in
-            for i in notes {
+            for note in notes {
                 let entity = NoteEntity(context: context)
-                entity.id = i.id
-                entity.title = i.title
-                entity.detail = i.detail
-                entity.createdDate = i.createdDate
+                NoteEntityMapper.update(entity: entity, from: note)
             }
             do {
                 try context.save()
@@ -50,7 +42,7 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
         }
     }
 
-    public func saveNote(note: Note, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
+    public func saveNote(_ note: NoteLocalDTO, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
         CoreDataService.shared.performBackgroundTask { context in
             let request: NSFetchRequest<NoteEntity> = NoteEntity.fetchRequest()
             request.predicate = NSPredicate(format: "id == %@", note.id)
@@ -60,11 +52,8 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
                     existing.title = note.title
                     existing.detail = note.detail
                 } else {
-                    let noteEntity = NoteEntity(context: context)
-                    noteEntity.id = note.id
-                    noteEntity.title = note.title
-                    noteEntity.detail = note.detail
-                    noteEntity.createdDate = note.createdDate
+                    let entity = NoteEntity(context: context)
+                    NoteEntityMapper.update(entity: entity, from: note)
                 }
                 try context.save()
                 onSuccess()
@@ -86,8 +75,7 @@ public class NoteDatabaseService: NoteDatabaseServiceContract {
                     try context.save()
                     onSuccess()
                 } else {
-                    let notFound = NSError(domain: "NoteDatabaseService", code: 404, userInfo: [NSLocalizedDescriptionKey: "Note not found"])
-                    onFailure(notFound)
+                    onFailure(DatabaseError.noteNotFound)
                 }
             } catch {
                 Logger.debug("Delete error: \(error)")
